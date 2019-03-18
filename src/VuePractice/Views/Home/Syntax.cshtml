@@ -20,9 +20,16 @@ Using v-html directive:&lt;span v-html=&quot;rawHtml&quot;&gt;&lt;/span&gt;</pre
     <div>Using mustaches:{{rawHtml}}</div>
     <div>Using v-html directive:<span v-html="rawHtml"></span></div>
 
+    <h5>#特性:</h5>
+    <pre v-pre>&lt;div v-bind:title=&quot;message&quot;&gt;使用v-bind绑定特性，鼠标移过来！&lt;/div&gt;</pre>
+    <div v-bind:title="message">使用v-bind绑定特性，鼠标移过来！</div>
+
     <h5>#使用 JavaScript 表达式:</h5>
     <pre v-pre>{{new Date()}}</pre>
     <div>{{new Date()}}</div>
+
+    
+    <h2>指令</h2>
 </div>
 
 @section Scripts{
