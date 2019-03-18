@@ -65,7 +65,21 @@ h2{
   border-bottom: gray solid 1px;
 }
 
+h5{
+  padding-top:15px;
+}
+
 input {
   display: block;
   margin: 10px 0;
+}
+
+pre{
+  padding: 2px 4px;
+  font-family: Consolas;
+  font-size: 16px;
+  color:black;
+  background: #b9f7eb;
+  white-space: pre-wrap;
+  border-radius: 4px;
 }

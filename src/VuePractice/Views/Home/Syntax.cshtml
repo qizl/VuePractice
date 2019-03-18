@@ -6,6 +6,23 @@
 
 <div id="app">
     <h2>插值</h2>
+    <h5>#文本&nbsp;“Mustache”语法 (双大括号) ：</h5>
+    <pre v-pre>&lt;div&gt;{{message}}&lt;/div&gt;
+&lt;div v-once&gt;{{message1}}&lt;/div&gt;
+&lt;button v-on:click=&quot;Changed&quot;&gt;Change Message&lt;/button&gt;</pre>
+    <div>{{message}}</div>
+    <div v-once>{{message1}}</div>
+    <button v-on:click="Changed">Change Message</button>
+    
+    <h5>#原始 HTML:</h5>
+    <pre v-pre>Using mustaches:{{rawHtml}}
+Using v-html directive:&lt;span v-html=&quot;rawHtml&quot;&gt;&lt;/span&gt;</pre>
+    <div>Using mustaches:{{rawHtml}}</div>
+    <div>Using v-html directive:<span v-html="rawHtml"></span></div>
+
+    <h5>#使用 JavaScript 表达式:</h5>
+    <pre v-pre>{{new Date()}}</pre>
+    <div>{{new Date()}}</div>
 </div>
 
 @section Scripts{

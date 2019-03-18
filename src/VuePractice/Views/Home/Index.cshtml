@@ -6,21 +6,35 @@
 
 <div id="app">
     <h2>声明式渲染</h2>
+    <pre v-pre>&lt;div v-bind:title=&quot;mt&quot;&gt;{{message}}&lt;/div&gt;</pre>
     <div v-bind:title="mt">{{message}}</div>
 
     <h2>条件与循环</h2>
+    <pre v-pre>&lt;div v-if=&quot;seen&quot;&gt;能看到？&lt;/div&gt;
+&lt;ol&gt;
+    &lt;li v-for=&quot;todo in todos&quot;&gt;{{todo.text}}&lt;/li&gt;
+&lt;/ol&gt;</pre>
     <div v-if="seen">能看到？</div>
     <ol>
         <li v-for="todo in todos">{{todo.text}}</li>
     </ol>
 
     <h2>处理用户输入</h2>
+    <pre v-pre>&lt;button v-on:click=&quot;reverseMessage&quot;&gt;点我&lt;/button&gt;</pre>
     <button v-on:click="reverseMessage">点我</button>
 
     <h2>指令</h2>
+    <pre v-pre>&lt;input v-model=&quot;message&quot;/&gt;</pre>
     <input v-model="message"/>
 
     <h2>组件化应用构建</h2>
+    <pre v-pre>&lt;ol&gt;
+    &lt;todo-item 
+        v-for=&quot;item in groceryList&quot; 
+        v-bind:todo=&quot;item&quot; 
+        v-bind:key=&quot;item.id&quot;&gt;
+    &lt;/todo-item&gt;
+&lt;/ol&gt;</pre>
     <ol>
         <todo-item 
             v-for="item in groceryList" 
@@ -28,6 +42,48 @@
             v-bind:key="item.id">
         </todo-item>
     </ol>
+    
+    <h5>#本页脚本：</h5>
+    <pre v-pre>Vue.component(&#39;todo-item&#39;,{
+    props:[&#39;todo&#39;],
+    template:&#39;&lt;li&gt;{{todo.text}}&lt;/li&gt;&#39;
+})
+
+var app = new Vue({
+    el:&#39;#app&#39;,
+    data:{
+    message:&#39;Hello Vue!&#39;,
+    mt:&#39;页面加载于：&#39;+new Date().toLocaleString(),
+    seen:true,
+    todos:[
+        { text: &#39;学习 JavaScript&#39; },
+        { text: &#39;学习 Vue&#39; },
+        { text: &#39;整个牛项目&#39; }
+    ],
+    groceryList:[
+        { id: 0, text: &#39;蔬菜&#39; },
+        { id: 1, text: &#39;奶酪&#39; },
+        { id: 2, text: &#39;随便其它什么人吃的东西&#39; }
+    ]
+    },
+    methods:{
+    reverseMessage: function ()
+        {
+            this.seen = !this.seen;
+            if (!this.seen)
+            {
+                this.todos.push({
+                text: &#39;装个x&#39;
+            });
+            }
+            else
+            {
+                this.todos.pop();
+            }
+            this.message=this.message.split(&#39;&#39;).reverse().join(&#39;&#39;);
+        }
+    }
+});</pre>
 </div>
 
 @section Scripts{

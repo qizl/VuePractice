@@ -6,6 +6,32 @@
 
 <div id="app">
     <h2>数据与方法</h2>
+    <pre v-pre>var data={
+    a: &#39;Click Me !&#39;,
+    aChangedValue: &#39;&#39;
+};
+
+// Object.freeze(data);
+
+var vm = new Vue({
+    el:&#39;#app&#39;,
+    data: data,
+    methods:{
+        changeA: function () {
+        // if (this.b)
+        // {
+        //     this.b += &#39; ha&#39;;
+        // }
+        this.a += &#39; ha&#39;;
+        }
+    }
+});
+
+vm.b = &quot;dataB&quot;;
+
+vm.$watch(&#39;a&#39;, function (newV, oldV) {
+    vm.aChangedValue = &#39;oldV:&#39; + oldV + &#39;,newV:&#39; + newV;
+});</pre>
     <button v-on:click="changeA">{{a}}</button>
     <div>{{aChangedValue}}</div>
     <!-- <div>{{b}}</div> -->
