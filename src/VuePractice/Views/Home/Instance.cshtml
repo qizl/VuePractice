@@ -1,3 +1,19 @@
 @{
-    ViewBag.title="实例";
+    ViewBag.Title="实例";
+}
+
+<partial name="_Base"/>
+
+<div id="app">
+    <h2>数据与方法</h2>
+    <button v-on:click="changeA">{{a}}</button>
+    <div>{{aChangedValue}}</div>
+    <!-- <div>{{b}}</div> -->
+
+    <h2>实例生命周期钩子</h2>
+    <img width="600px" src="https://cn.vuejs.org/images/lifecycle.png">
+</div>
+
+@section Scripts{
+    <script src="~/js/base/instance.js"></script>
 }

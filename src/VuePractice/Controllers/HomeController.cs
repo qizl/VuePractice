@@ -12,7 +12,10 @@ namespace VuePractice.Controllers
     {
         public IActionResult Index() => View();
 
+        [Route("/Base/Instance")]
         public IActionResult Instance() => View();
+        [Route("/Base/Syntax")]
+        public IActionResult Syntax() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -6,7 +6,7 @@
 var app = new Vue({
     el:'#app',
     data:{
-        message:'Vue Practice',
+        message:'Hello Vue!',
         mt:'页面加载于：'+new Date().toLocaleString(),
         seen:true,
         todos:[
@@ -23,6 +23,17 @@ var app = new Vue({
     methods:{
         reverseMessage: function ()
         {
+            this.seen = !this.seen;
+            if (!this.seen)
+            {
+                this.todos.push({
+                    text: '装个x'
+                });
+            }
+            else
+            {
+                this.todos.pop();
+            }
             this.message=this.message.split('').reverse().join('');
         }
     }

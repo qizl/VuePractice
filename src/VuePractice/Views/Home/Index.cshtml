@@ -2,14 +2,14 @@
     ViewBag.Title = "介绍";
 }
 
-<div class="text-center">
-    <h1 class="display-4" v-bind:title="mt">{{message}}</h1>
-</div>
-<div>
+<partial name="_Base"/>
+
+<div id="app">
     <h2>声明式渲染</h2>
-    <div v-if="seen">能看到？</div>
+    <div v-bind:title="mt">{{message}}</div>
 
     <h2>条件与循环</h2>
+    <div v-if="seen">能看到？</div>
     <ol>
         <li v-for="todo in todos">{{todo.text}}</li>
     </ol>
@@ -31,5 +31,5 @@
 </div>
 
 @section Scripts{
-    <script src="~/js/index.js"></script>
+    <script src="~/js/base/index.js"></script>
 }
