@@ -19,12 +19,12 @@ namespace VuePractice.Controllers
         public IActionResult Syntax() => View();
 
         [Route("/Base/Computed")]
-        public IActionResult Computed()=>View();
+        public IActionResult Computed() => View();
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        [Route("/Base/ClassAndStyle")]
+        public IActionResult ClassAndStyle() => View();
+
+        [Route("/Base/Conditional")]
+        public IActionResult Conditional() => View();
     }
 }

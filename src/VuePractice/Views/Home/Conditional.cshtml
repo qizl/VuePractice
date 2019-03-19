@@ -1,0 +1,103 @@
+@{
+    ViewBag.Title="条件渲染";
+}
+
+<partial name="_Base"/>
+
+<div id="app">
+    <h2>v-if</h2>
+    <h5>#在 &lt;template&gt; 元素上使用 v-if 条件渲染分组</h5>
+    <h5>#v-else</h5>
+    <h5>#v-else-if</h5>
+    <div v-if='awesome'>Vue is awesome!</div>
+    <div v-else>Oh no 😢</div>
+    <div>Awesome, true or false? <input v-model='isAwesome' style="display:inline"/></div>
+    The input is 
+    <template v-if='awesome === true'>boolean true</template>
+    <template v-else-if='awesome === false'>boolean false</template>
+    <template v-else>string {{awesome}}</template>
+    <pre v-pre>&lt;template v-if=&#39;awesome === true&#39;&gt;boolean true&lt;/template&gt;
+&lt;template v-else-if=&#39;awesome === false&#39;&gt;boolean false&lt;/template&gt;
+&lt;template v-else&gt;string {{awesome}}&lt;/template&gt;</pre>
+
+    <h5>#用 key 管理可复用的元素</h5>
+    <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" v-bind:key="txtUserNameKey">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" v-bind:key="txtEmailKey">
+    </template>
+    <button v-on:click='changeLoginType'>Change Login Type</button>
+    <button v-on:click='changeKey'>{{keyDescribe}}</button> {{txtUserNameKey}}, {{txtEmailKey}}
+    <pre v-pre>&lt;template v-if=&quot;loginType === &#39;username&#39;&quot;&gt;
+    &lt;label&gt;Username&lt;/label&gt;
+    &lt;input placeholder=&quot;Enter your username&quot; v-bind:key=&quot;txtUserNameKey&quot;&gt;
+&lt;/template&gt;
+&lt;template v-else&gt;
+    &lt;label&gt;Email&lt;/label&gt;
+    &lt;input placeholder=&quot;Enter your email address&quot; v-bind:key=&quot;txtEmailKey&quot;&gt;
+&lt;/template&gt;
+&lt;button v-on:click=&#39;changeLoginType&#39;&gt;Change Login Type&lt;/button&gt;
+&lt;button v-on:click=&#39;changeKey&#39;&gt;{{keyDescribe}}&lt;/button&gt; {{txtUserNameKey}}, {{txtEmailKey}}</pre>
+    
+    <h2>v-show</h2>
+    <div v-show='awesome'>Vue is awesome!</div>
+    <pre v-pre>&lt;div v-show=&#39;awesome&#39;&gt;Vue is awesome!&lt;/div&gt;</pre>
+
+    <h2>v-if vs v-show</h2>
+    <h2>v-if 与 v-for 一起使用</h2>
+    不推荐
+
+    
+    <h5>#本页脚本：</h5>
+    <pre v-pre>var app = new Vue({
+    el: &#39;#app&#39;,
+    data: {
+        awesome: true,
+        loginType: &#39;username&#39;,
+        keyDescribe: &#39;Use Different Key&#39;,
+        txtUserNameKey: &#39;key&#39;,
+        txtEmailKey: &#39;key&#39;
+    },
+    methods: {
+        changeLoginType: function () {
+            if (this.loginType == &#39;username&#39;)
+                this.loginType = &#39;email&#39;;
+            else
+                this.loginType = &#39;username&#39;;
+        },
+        changeKey: function () {
+            if (this.keyDescribe == &#39;Use Different Key&#39;) {
+                this.keyDescribe = &#39;Use Same key&#39;;
+                this.txtUserNameKey = &#39;username input&#39;;
+                this.txtEmailKey = &#39;email key&#39;;
+            } else {
+                this.keyDescribe = &#39;Use Different Key&#39;;
+                this.txtUserNameKey = &#39;key&#39;;
+                this.txtEmailKey = &#39;key&#39;;
+            }
+        }
+    },
+    computed: {
+        isAwesome: {
+            get: function () {
+                return this.awesome;
+            },
+            set: function (v) {
+                if (v == &#39;true&#39;)
+                    this.awesome = true;
+                else if (v == &#39;false&#39;)
+                    this.awesome = false;
+                else
+                    this.awesome = v;
+            }
+        }
+    }
+});</pre>
+</div>
+
+@section Scripts{
+    <script src="~/js/base/conditional.js"></script>
+}
