@@ -26,5 +26,8 @@ namespace VuePractice.Controllers
 
         [Route("/Base/Conditional")]
         public IActionResult Conditional() => View();
+
+        [Route("/Base/List")]
+        public IActionResult List() => View();
     }
 }
