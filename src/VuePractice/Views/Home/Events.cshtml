@@ -1,0 +1,65 @@
+@{
+    ViewBag.Title="事件处理";
+}
+
+<partial name="_Base"/>
+
+<div id="app">
+    <h2>监听事件</h2>
+    <h2>事件处理方法</h2>
+    <h2>内联处理器中的方法</h2>
+    <h2>事件修饰符</h2>
+    <pre v-pre>&lt;!-- 阻止单击事件继续传播 --&gt;
+&lt;a v-on:click.stop=&quot;doThis&quot;&gt;&lt;/a&gt;
+
+&lt;!-- 提交事件不再重载页面 --&gt;
+&lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;
+
+&lt;!-- 修饰符可以串联 --&gt;
+&lt;a v-on:click.stop.prevent=&quot;doThat&quot;&gt;&lt;/a&gt;
+
+&lt;!-- 只有修饰符 --&gt;
+&lt;form v-on:submit.prevent&gt;&lt;/form&gt;
+
+&lt;!-- 添加事件监听器时使用事件捕获模式 --&gt;
+&lt;!-- 即元素自身触发的事件先在此处理，然后才交由内部元素进行处理 --&gt;
+&lt;div v-on:click.capture=&quot;doThis&quot;&gt;...&lt;/div&gt;
+
+&lt;!-- 只当在 event.target 是当前元素自身时触发处理函数 --&gt;
+&lt;!-- 即事件不是从内部元素触发的 --&gt;
+&lt;div v-on:click.self=&quot;doThat&quot;&gt;...&lt;/div&gt;
+
+&lt;!-- 点击事件将只会触发一次 --&gt;
+&lt;a v-on:click.once=&quot;doThis&quot;&gt;&lt;/a&gt;
+
+&lt;!-- 滚动事件的默认行为 (即滚动行为) 将会立即触发 --&gt;
+&lt;!-- 而不会等待 `onScroll` 完成  --&gt;
+&lt;!-- 这其中包含 `event.preventDefault()` 的情况 --&gt;
+&lt;div v-on:scroll.passive=&quot;onScroll&quot;&gt;...&lt;/div&gt;</pre>
+
+    <h2>按键修饰符</h2>
+    <h5>#按键码</h5>
+    <pre v-pre>&lt;!-- 只有在 `key` 是 `Enter` 时调用 `vm.submit()` --&gt;
+&lt;input v-on:keyup.enter=&quot;submit&quot;&gt;
+
+&lt;input v-on:keyup.page-down=&quot;onPageDown&quot;&gt;
+
+&lt;input v-on:keyup.13=&quot;submit&quot;&gt;</pre>
+    常用按键别名：
+    <pre>.enter
+.tab
+.delete (捕获“删除”和“退格”键)
+.esc
+.space
+.up
+.down
+.left
+.right</pre>
+    自定义按键修饰符别名：
+    <pre v-pre>Vue.config.keyCodes.f1 = 112</pre>
+
+    <h2>系统修饰键</h2>
+    <h5>#.exact 修饰符</h5>
+    <h5>#鼠标按钮修饰符</h5>
+    <h2>为什么在 HTML 中监听事件?</h2>
+</div>

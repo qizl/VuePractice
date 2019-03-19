@@ -6,20 +6,131 @@
 
 <div id="app">
     <h2>用 v-for 把一个数组对应为一组元素</h2>
+    <ul>
+        <li v-for='item in items'>
+            {{item.message}}
+        </li>
+        <li v-for='(item,index) in items'>
+            {{item.message + ' - ' +index}}
+        </li>
+        <li v-for='(item,index) of items'>
+            {{item.message + ' - ' +index+' use of'}}
+        </li>
+    </ul>
+    <pre v-pre>&lt;ul&gt;
+    &lt;li v-for=&#39;item in items&#39;&gt;
+        {{item.message}}
+    &lt;/li&gt;
+    &lt;li v-for=&#39;(item,index) in items&#39;&gt;
+        {{item.message + &#39; - &#39; +index}}
+    &lt;/li&gt;
+    &lt;li v-for=&#39;(item,index) of items&#39;&gt;
+        {{item.message + &#39; - &#39; +index+&#39; use of&#39;}}
+    &lt;/li&gt;
+&lt;/ul&gt;</pre>
 
     <h2>一个对象的 v-for</h2>
-    <h2>key</h2>
+    <ul>
+        <li v-for='value in object'>
+            {{value}}
+        <li>
+        <li v-for='(value,key,index) in object'>
+            {{index+'.'+key+'='+value}}
+        <li>
+    </ul>
+    <pre v-pre>&lt;ul&gt;
+    &lt;li v-for=&#39;value in object&#39;&gt;
+        {{value}}
+    &lt;li&gt;
+    &lt;li v-for=&#39;(value,key,index) in object&#39;&gt;
+        {{index+&#39;.&#39;+key+&#39;=&#39;+value}}
+    &lt;li&gt;
+&lt;/ul&gt;</pre>
+
+    <h2>key</h2>    
     <h2>数组更新检测</h2>
     <h5>变异方法</h5>
     <h5>替换数组</h5>
     <h5>注意事项</h5>
-
     <h2>对象更改检测注意事项</h2>
     <h2>显示过滤/排序结果</h2>
+
     <h2>一段取值范围的 v-for</h2>
+    <div>
+        <span v-for='n in 10'>{{n+','}}</span>
+    </div>
+
     <h2>v-for on a &lt;template&gt;</h2>
     <h2>v-for with v-if</h2>
+
     <h2>一个组件的 v-for</h2>
+    <pre v-pre>&lt;my-component
+        v-for=&#39;(item,index) in items&#39;
+        v-bind:item=&#39;item&#39;
+        v-bind:index=&#39;index&#39;
+        v-bind:key=&#39;item.id&#39;&gt;&lt;/my-component&gt;</pre>
+    <form v-on:submit.prevent="addNewTodo">
+        <label for="new-todo">Add a todo</label>
+        <input v-model="newTodoText" id="new-todo" placeholder="E.g. Feed the cat" style='display:inline'>
+        <button>Add</button>
+    </form>
+    <ul>
+        <li is="todo-item" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title" v-on:remove="todos.splice(index, 1)"></li>
+    </ul>
+    <pre v-pre>&lt;form v-on:submit.prevent=&quot;addNewTodo&quot;&gt;
+    &lt;label for=&quot;new-todo&quot;&gt;Add a todo&lt;/label&gt;
+    &lt;input v-model=&quot;newTodoText&quot; id=&quot;new-todo&quot; placeholder=&quot;E.g. Feed the cat&quot; style=&#39;display:inline&#39;&gt;
+    &lt;button&gt;Add&lt;/button&gt;
+&lt;/form&gt;
+&lt;ul&gt;
+    &lt;li is=&quot;todo-item&quot; v-for=&quot;(todo, index) in todos&quot; v-bind:key=&quot;todo.id&quot; v-bind:title=&quot;todo.title&quot; v-on:remove=&quot;todos.splice(index, 1)&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+
+    <h5>#本页脚本：</h5>
+    <pre v-pre>Vue.component(&#39;todo-item&#39;, {
+    template: &#39;\
+        &lt;li&gt;\
+        {{ title }}\
+        &lt;button v-on:click=&quot;$emit(\&#39;remove\&#39;)&quot;&gt;Remove&lt;/button&gt;\
+        &lt;/li&gt;\
+    &#39;,
+    props: [&#39;title&#39;]
+});
+
+var app = new Vue({
+    el: &#39;#app&#39;,
+    data: {
+        items: [{ message: &#39;Foo&#39; }, { message: &#39;Bar&#39; }],
+        object: {
+            firstName: &#39;John&#39;,
+            lastName: &#39;Doe&#39;,
+            age: 14
+        },
+        newTodoText: &#39;&#39;,
+        todos: [
+            {
+                id: 1,
+                title: &#39;Do the dishes&#39;,
+            },
+            {
+                id: 2,
+                title: &#39;Take out the trash&#39;,
+            },
+            {
+                id: 3,
+                title: &#39;Mow the lawn&#39;
+            }
+        ],
+        nextTodoId: 4
+    },
+    methods: {
+        addNewTodo: function ()
+        {
+            this.todos.push({ id: this.nextTodoId++, title: this.newTodoText });
+            this.newTodoText = &#39;&#39;;
+        }
+    }
+})</pre>
 </div>
 
 @section Scripts{

@@ -1,0 +1,122 @@
+@{
+    ViewBag.Title="组件基础";
+}
+
+<partial name="_Base"/>
+
+<div id="app">
+    <h2>基本示例</h2>
+    <h2>组件的复用</h2>
+    <h5>#data 必须是一个函数</h5>
+    <h2>组件的组织</h2>
+    <h2>通过 Prop 向子组件传递数据</h2>
+    <h2>单个根元素</h2>
+    <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></blog-post>
+    <pre v-pre>Vue.component(&#39;blog-post&#39;, {
+    props: [&#39;post&#39;],
+    template: `
+            &lt;div class=&quot;blog-post&quot;&gt;
+                &lt;h3&gt;{{ post.title }}&lt;/h3&gt;
+                &lt;div v-html=&quot;post.content&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        `
+});</pre>
+    <pre v-pre>&lt;blog-post v-for=&quot;post in posts&quot; v-bind:key=&quot;post.id&quot; v-bind:post=&quot;post&quot;&gt;&lt;/blog-post&gt;</pre>
+
+    <h2>监听子组件事件</h2>
+    <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post1 
+            v-for="post in posts"
+            v-bind:key="post.id+10"
+            v-bind:post="post"
+            v-on:enlarge-text='postFontSize+=.1'></blog-post1>
+    </div>
+
+    <h5>#使用事件抛出一个值</h5>
+    <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post2 
+            v-for="post in posts"
+            v-bind:key="post.id+20"
+            v-bind:post="post"
+            v-on:enlarge-text='onEnlargeText'></blog-post2>
+    </div>
+
+    <h5>#在组件上使用 v-model</h5>
+    <custom-input v-bind:value="searchText" v-on:input="searchText=$event"></custom-input>
+
+    <h2>通过插槽分发内容</h2>
+    <h2>动态组件</h2>
+    <h2>解析 DOM 模板时的注意事项</h2>
+
+    <h5>#本页脚本：</h5>
+    <pre v-pre>Vue.component(&#39;blog-post&#39;, {
+    props: [&#39;post&#39;],
+    template: `
+        &lt;div class=&quot;blog-post&quot;&gt;
+            &lt;h3&gt;{{ post.title }}&lt;/h3&gt;
+            &lt;div v-html=&quot;post.content&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    `
+});
+
+Vue.component(&#39;blog-post1&#39;, {
+    props: [&#39;post&#39;],
+    template: `
+        &lt;div class=&quot;blog-post&quot;&gt;
+            &lt;h3&gt;{{ post.title }}&lt;/h3&gt;
+            &lt;button v-on:click=&quot;$emit(&#39;enlarge-text&#39;)&quot;&gt;
+                Enlarge text
+            &lt;/button&gt;
+            &lt;div v-html=&quot;post.content&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    `
+});
+
+Vue.component(&#39;blog-post2&#39;, {
+    props: [&#39;post&#39;],
+    template: `
+        &lt;div class=&quot;blog-post&quot;&gt;
+            &lt;h3&gt;{{ post.title }}&lt;/h3&gt;
+            &lt;button v-on:click=&quot;$emit(&#39;enlarge-text&#39;,.1)&quot;&gt;
+                Enlarge text
+            &lt;/button&gt;
+            &lt;div v-html=&quot;post.content&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    `
+});
+
+Vue.component(&#39;custom-input&#39;, {
+    props: [&#39;value&#39;],
+    template: `&lt;input v-bind:value=&quot;value&quot; v-on:input=&quot;$emit(&#39;input&#39;, $event.target.value)&quot;&gt;`
+});
+
+var app = new Vue({
+    el: &#39;#app&#39;,
+    data: {
+        posts: [{
+            id: 1,
+            title: &#39;My journey with Vue&#39;
+        },
+        {
+            id: 2,
+            title: &#39;Blogging with Vue&#39;
+        },
+        {
+            id: 3,
+            title: &#39;Why Vue is so fun&#39;
+        }
+        ],
+        postFontSize: 1,
+        searchText: &#39;&#39;
+    },
+    methods: {
+        onEnlargeText: function (x) {
+            this.postFontSize += x;
+        }
+    }
+});</pre>
+</div>
+
+@section Scripts{
+    <script src="~/js/base/components.js"></script>
+}

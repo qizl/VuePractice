@@ -29,5 +29,14 @@ namespace VuePractice.Controllers
 
         [Route("/Base/List")]
         public IActionResult List() => View();
+
+        [Route("/Base/Events")]
+        public IActionResult Events() => View();
+
+        [Route("/Base/Forms")]
+        public IActionResult Forms() => View();
+
+        [Route("/Base/Components")]
+        public IActionResult Components() => View();
     }
 }
