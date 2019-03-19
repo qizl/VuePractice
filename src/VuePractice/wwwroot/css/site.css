@@ -83,3 +83,7 @@ pre{
   white-space: pre-wrap;
   border-radius: 4px;
 }
+
+#app a{
+  display: block;
+}

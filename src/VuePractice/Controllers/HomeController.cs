@@ -14,8 +14,12 @@ namespace VuePractice.Controllers
 
         [Route("/Base/Instance")]
         public IActionResult Instance() => View();
+
         [Route("/Base/Syntax")]
         public IActionResult Syntax() => View();
+
+        [Route("/Base/Computed")]
+        public IActionResult Computed()=>View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
