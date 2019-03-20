@@ -1,0 +1,29 @@
+@{
+    ViewBag.Title="Getting Started";
+}
+
+<partial name="_Essentials"/>
+
+<div id="app">
+    <h2>HTML</h2>
+    <h2>JavaScript</h2>
+
+    <p>Hello App!</p>
+    <p>
+        <!-- use router-link component for navigation. -->
+        <!-- specify the link by passing the `to` prop. -->
+        <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
+        <router-link to="/foo">Go to Foo</router-link>
+        <router-link to="/bar">Go to Bar</router-link>
+        <router-link to="/user/1">Go to User1</router-link>
+        <router-link to="/user/2">Go to User2</router-link>
+    </p>
+    <!-- route outlet -->
+    <!-- component matched by the route will render here -->
+    <router-view></router-view>
+</div>
+
+@section Scripts{
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="~/js/vuerouter/essentials/route.js"></script>
+}

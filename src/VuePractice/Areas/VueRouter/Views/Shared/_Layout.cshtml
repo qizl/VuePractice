@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Vue.js 教程练习</title>
+    <title>@ViewData["Title"] - Vue Router 练习</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -21,7 +21,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Vue.js 教程练习</a>
+                <a class="navbar-brand" asp-area="VueRouter" asp-controller="Essentials" asp-action="Index">Vue Router 练习</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -29,31 +29,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/">基础</a>
+                            <a class="nav-link text-dark" asp-area="VueRouter" asp-controller="Essentials" asp-action="Index">Essentials</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/">深入了解组件</a>
+                            <a class="nav-link text-dark"  asp-area="VueRouter" asp-controller="Advanced" asp-action="Index">Advanced</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/">过渡 & 动画</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/">可复用性 & 组合</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/">工具</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Scale">规模化</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/">内在</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/">迁移</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/">更多</a>
+                            <a class="nav-link text-dark"  href="/">-> Vue.js 教程练习</a>
                         </li>
                     </ul>
                 </div>
