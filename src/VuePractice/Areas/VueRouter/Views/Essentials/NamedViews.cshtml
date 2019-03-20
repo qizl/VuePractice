@@ -1,0 +1,92 @@
+@{
+    ViewBag.Title="Named Views";
+}
+
+<partial name="_Essentials"/>
+
+<div id="app">
+    <h2>Named Views</h2>
+    <router-view class="view one"></router-view>
+    <router-view class="view two" name="a"></router-view>
+    <router-view class="view three" name="b"></router-view>
+    <pre v-pre>&lt;router-view class=&quot;view one&quot;&gt;&lt;/router-view&gt;
+&lt;router-view class=&quot;view two&quot; name=&quot;a&quot;&gt;&lt;/router-view&gt;
+&lt;router-view class=&quot;view three&quot; name=&quot;b&quot;&gt;&lt;/router-view&gt;</pre>
+    <pre v-pre>const Foo = {
+    template: &#39;&lt;div&gt;This is Foo&lt;/div&gt;&#39;,
+};
+const Bar = {
+    template: &#39;&lt;div&gt;This is Bar&lt;/div&gt;&#39;,
+};
+const Baz = {
+    template: &#39;&lt;div&gt;This is Baz&lt;/div&gt;&#39;,
+};
+
+const router = new VueRouter({
+    routes: [{
+        path: &#39;/&#39;,
+        components: {
+            default: Foo,
+            a: Bar,
+            b: Baz
+        }
+    }]
+})
+
+const app = new Vue({
+    router
+}).$mount(&#39;#app&#39;)</pre>
+</div>
+
+<div id="app1">
+    <h5>#Nested Named Views</h5>
+    <router-link to="/settings">Go to Settings</router-link>
+    <router-link to="/settings/emails">Go to Settings/Emails</router-link>
+    <router-link to="/settings/profile">Go to Settings/Profile</router-link>
+    <router-view/>
+</div>
+
+<pre v-pre>const UserSettings = {
+    template:  `
+        &lt;div class=&quot;user&quot;&gt;
+            &lt;p&gt;User {{ $route.params.id }}&lt;/p&gt;
+            &lt;router-view&gt;&lt;/router-view&gt;
+        &lt;/div&gt;
+    `
+};
+const UserEmailsSubscriptions = {
+    template: &#39;&lt;div&gt;This is UserEmailsSubscriptions&lt;/div&gt;&#39;
+};
+const UserProfile = {
+    template: &#39;&lt;div&gt;This is UserProfile&lt;/div&gt;&#39;
+};
+const UserProfilePreview = {
+    template: &#39;&lt;div&gt;This is UserProfilePreview&lt;/div&gt;&#39;
+};
+
+const router1 = new VueRouter({
+    routes: [{
+        path: &#39;/settings&#39;,
+        component: UserSettings,
+        children: [{
+            path: &#39;emails&#39;,
+            component: UserEmailsSubscriptions
+        }, {
+            path: &#39;profile&#39;,
+            components: {
+                default: UserProfile,
+                helper: UserProfilePreview
+            }
+        }]
+    }]
+})
+
+const app1 = new Vue({
+    el:&#39;#app1&#39;,
+    router: router1
+})</pre>
+
+@section Scripts{
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="~/js/vuerouter/essentials/namedviews.js"></script>
+}

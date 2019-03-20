@@ -85,6 +85,7 @@ pre{
   border-radius: 4px;
 }
 
-#app a{
+#app a,
+#app1 a {
   display: block;
 }
