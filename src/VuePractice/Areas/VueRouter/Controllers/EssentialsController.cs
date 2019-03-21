@@ -5,6 +5,7 @@ namespace VuePractice.Areas.VueRouter.Controllers
     [Area("VueRouter")]
     public class EssentialsController : Controller
     {
+        [Route("/VueRouter")]
         [Route("/Essentials")]
         public IActionResult Index() => View();
 

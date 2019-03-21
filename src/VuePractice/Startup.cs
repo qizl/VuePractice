@@ -47,14 +47,14 @@ namespace VuePractice
             }
 
             // app.UseHttpsRedirection();
-            // app.UseStaticFiles();
+            app.UseStaticFiles();
             
-            var provider = new FileExtensionContentTypeProvider();
-            provider.Mappings[".vue"] = "text/xml";            
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                ContentTypeProvider = provider
-            });
+            // var provider = new FileExtensionContentTypeProvider();
+            // provider.Mappings[".vue"] = "text/xml";            
+            // app.UseStaticFiles(new StaticFileOptions
+            // {
+            //     ContentTypeProvider = provider
+            // });
 
             app.UseRouting(routes =>
             {
