@@ -1,14 +1,31 @@
-﻿var path = require('path');
+﻿const path = require('path');
 
-var config = {
-    entry: {
-        main: './main'
-    },
+module.exports = {
+    entry: './src/index.js',
     output: {
-        path: path.join(__dirname, './dist'),
-        publicPath: '/dist/',
-        filename: 'main.js'
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+        rules: [{
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.(csv|tsv)$/,
+                use: [
+                    'csv-loader'
+                ]
+            },
+            {
+                test: /\.xml$/,
+                use: [
+                    'xml-loader'
+                ]
+            }
+        ]
     }
-}
-
-module.exports = config;
+};
