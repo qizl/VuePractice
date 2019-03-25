@@ -1,12 +1,19 @@
 ﻿<template>
-    <div>Hello {{name}}</div>
+    <div>
+        Hello {{name}}
+        <cTitle link="main" text="from app.vue">html</cTitle>
+    </div>
 </template>
 <script>
+    import cTitle from './title.vue';
     export default{
         data(){
             return{
                 name:'Vue.js'
             }
+        },
+        components:{
+            cTitle
         }
     }
 </script>

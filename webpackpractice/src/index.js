@@ -18,7 +18,7 @@ function component() {
     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
     element.classList.add('hello');
 
-    console.log(Data);
+    // console.log(Data);
 
     return element;
 }
