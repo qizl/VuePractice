@@ -1,6 +1,6 @@
-﻿// import hello from '~/components/HelloWorld.vue'
+﻿import app from '../../vues/app.vue';
 
-var app = new Vue({
+new Vue({
     el: '#app',
-    // render: c => c(hello)
+    render: c => c(app)
 })

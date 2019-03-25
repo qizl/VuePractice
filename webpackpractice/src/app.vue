@@ -1,7 +1,7 @@
 ﻿<template>
     <div>
         Hello {{name}}
-        <cTitle link="main" text="from app.vue">html</cTitle>
+        <cTitle link="main" text="from app.vue">innerHtml</cTitle>
     </div>
 </template>
 <script>
