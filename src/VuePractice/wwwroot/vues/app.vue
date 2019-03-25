@@ -65,6 +65,28 @@ new Vue({
 
 &lt;style scoped&gt;
 &lt;/style&gt;</pre>
+    webpack.config.js:
+    <pre v-pre>const path = require(&#39;path&#39;);
+const VueLoaderPlugin = require(&#39;vue-loader/lib/plugin&#39;);
+
+module.exports = {
+    entry: &#39;./vuepractice/wwwroot/js/tool/index.js&#39;,
+    output: {
+        filename: &#39;bundle.js&#39;,
+        path: path.resolve(__dirname, &#39;vuepractice&#39;, &#39;wwwroot&#39;, &#39;js&#39;, &#39;tool&#39;)
+    },
+    module: {
+        rules: [{
+            test: /\.vue$/,
+            use: [
+                &#39;vue-loader&#39;
+            ]
+        }]
+    },
+    plugins: [
+        new VueLoaderPlugin()
+    ]
+};</pre>
     </div>
 </template>
 
