@@ -87,6 +87,42 @@ module.exports = {
         new VueLoaderPlugin()
     ]
 };</pre>
+    package.json
+    <pre v-pre>{
+  &quot;name&quot;: &quot;vuepractice&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;private&quot;: true,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;dev&quot;: &quot;webpack-dev-server --open --config webpack.config.js&quot;,
+    &quot;serve&quot;: &quot;vue-cli-service serve&quot;,
+    &quot;build&quot;: &quot;webpack&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;babel&quot;: &quot;^6.23.0&quot;,
+    &quot;babel-core&quot;: &quot;^6.26.3&quot;,
+    &quot;babel-loader&quot;: &quot;^8.0.5&quot;,
+    &quot;babel-plugin-transform-runtime&quot;: &quot;^6.23.0&quot;,
+    &quot;babel-preset-es2015&quot;: &quot;^6.24.1&quot;,
+    &quot;babel-runtime&quot;: &quot;^6.26.0&quot;,
+    &quot;css-loader&quot;: &quot;^2.1.1&quot;,
+    &quot;style-loader&quot;: &quot;^0.23.1&quot;,
+    &quot;vue&quot;: &quot;^2.6.10&quot;,
+    &quot;vue-hot-reload-api&quot;: &quot;^2.3.3&quot;,
+    &quot;vue-loader&quot;: &quot;^15.7.0&quot;,
+    &quot;vue-style-loader&quot;: &quot;^4.1.2&quot;,
+    &quot;vue-template-compiler&quot;: &quot;^2.6.10&quot;,
+    &quot;webpack&quot;: &quot;^4.29.6&quot;,
+    &quot;webpack-cli&quot;: &quot;^3.3.0&quot;,
+    &quot;webpack-dev-server&quot;: &quot;^3.2.1&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;@vue/cli&quot;: &quot;^3.5.1&quot;
+  }
+}</pre>
     </div>
 </template>
 
