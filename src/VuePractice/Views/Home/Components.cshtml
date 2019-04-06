@@ -40,6 +40,11 @@
             v-bind:post="post"
             v-on:enlarge-text='onEnlargeText'></blog-post2>
     </div>
+    <pre v-pre>&lt;blog-post2 
+    v-for=&quot;post in posts&quot;
+    v-bind:key=&quot;post.id+20&quot;
+    v-bind:post=&quot;post&quot;
+    v-on:enlarge-text=&#39;onEnlargeText&#39;&gt;&lt;/blog-post2&gt;</pre>
 
     <h5>#在组件上使用 v-model</h5>
     <custom-input v-bind:value="searchText" v-on:input="searchText=$event"></custom-input>
