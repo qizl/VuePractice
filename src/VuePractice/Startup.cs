@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -48,7 +47,7 @@ namespace VuePractice
 
             // app.UseHttpsRedirection();
             app.UseStaticFiles();
-            
+
             // var provider = new FileExtensionContentTypeProvider();
             // provider.Mappings[".vue"] = "text/xml";            
             // app.UseStaticFiles(new StaticFileOptions
@@ -56,16 +55,27 @@ namespace VuePractice
             //     ContentTypeProvider = provider
             // });
 
-            app.UseRouting(routes =>
-            {
-                routes.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-                routes.MapControllerRoute("Areas", "{area:exists}/{controller=Essentials}/{action=Index}/{id?}");
-                // routes.MapRazorPages();
-            });
+            app.UseRouting();
+            //app.UseRouting(routes =>
+            //{
+            //    routes.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            //    routes.MapControllerRoute("Areas", "");
+            //    // routes.MapRazorPages();
+            //});
 
             app.UseCookiePolicy();
 
             app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "Areas",
+                    pattern: "{area:exists}/{controller=Essentials}/{action=Index}/{id?}");
+            });
         }
     }
 }
