@@ -19,7 +19,7 @@
     "babel-runtime": "^6.26.0",
     "css-loader": "^2.1.1",
     "csv-loader": "^3.0.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "style-loader": "^0.23.1",
     "vue": "^2.6.10",
     "vue-hot-reload-api": "^2.3.3",
