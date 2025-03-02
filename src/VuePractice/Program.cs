@@ -14,11 +14,7 @@ namespace VuePractice
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder
-#if Release
-                    .UseUrls("http://*:7022")
-#endif
-                    .UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }
